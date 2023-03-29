@@ -1,0 +1,36 @@
+﻿<div class="row gx-1">
+    <div class="col-4">
+    </div>
+    <div class="col-4">
+
+        @if (TempData["Erro"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Erro"]
+            </div>
+        }
+
+        <div class="card text-bg-dark">
+            <div class="card-header">
+                <h2>Cadastro de Clientes</h2>
+            </div>
+            <div class="card-body">
+                <form action="/Clientes/Cadastro" method="post">
+                    <label>Nome</label>
+                    <input type="text" name="nome" class="form-control form-control-sm" />
+                    <br />
+                    <label>Telefone</label>
+                    <input type="text" name="telefone" class="form-control form-control-sm" />
+                    <br />
+                    <button type="submit" class="btn btn-success">
+                        Salvar Cliente
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4">
+    </div>
+</div>
