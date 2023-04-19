@@ -1,4 +1,4 @@
-﻿@model List<AulaWebApp.Models.ClienteViewModel>
+﻿@model AulaWebApp.Models.ClienteViewModel
 
 <div class="row gx-1">
     <div class="col-4">
@@ -19,13 +19,13 @@
             <div class="card-body">
                 <form action="/Clientes/SalvarDados" method="post">
                     <label>Código</label>
-                    <input type="number" name="Id" class="form-control form-control-sm" readonly />
+                    <input type="number" name="Id" class="form-control form-control-sm" value="@Model.Id" readonly />
                     <br />
                     <label>Nome</label>
-                    <input type="text" name="Nome" class="form-control form-control-sm" />
+                    <input type="text" name="Nome" class="form-control form-control-sm" value="@Model.Nome" />
                     <br />
                     <label>Telefone</label>
-                    <input type="text" name="Telefone" class="form-control form-control-sm" />
+                    <input type="text" name="Telefone" class="form-control form-control-sm" value="@Model.Telefone" />
                     <br />
                     <button type="submit" class="btn btn-success">
                         Salvar Cliente

@@ -1,10 +1,12 @@
-﻿<div class="card text-bg-dark">
+﻿@model List<AulaWebApp.Models.ClienteViewModel>
+
+<div class="card text-bg-dark">
     <div class="card-header">
         <h2>Lista de Clientes</h2>
     </div>
     <div class="card-body">
         <div class="row gx-1">
-            <div class="col-2">
+            <div class="col">
                 <a href="/Clientes/Cadastro" class="btn btn-success btn-sm">Cadastro de Cliente</a>
             </div>
             <div class="col-3">
@@ -19,7 +21,7 @@
                 <input name="Pesquisa" type="text" class="form-control form-control-sm" />
             </div>
             <div class="col-1">
-                <a href="/Clientes/Cadastro" class="btn btn-info btn-sm">Pesquisar</a>
+                <a href="/Clientes/Cadastro" class="btn btn-info btn-sm w-100">Pesquisar</a>
             </div>
         </div>
         <table class="table table-striped table-hover">
@@ -32,38 +34,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Suelen</td>
-                    <td>(16) 9999-9999</td>
-                    <td>
-                        <a href="/Clientes/Editar/1" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="/Clientes/Excluir/1" class="btn btn-danger btn-sm">Excluir</a>
-                        <a href="/Clientes/Compras/1" class="btn btn-primary btn-sm">Lista de Compra</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Cleber</td>
-                    <td>(16) 9999-9999</td>
-                    <td>
-                        <a href="/Clientes/Editar/2" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="/Clientes/Excluir/2" class="btn btn-danger btn-sm">Excluir</a>
-                        <a href="/Clientes/Compras/2" class="btn btn-primary btn-sm">Lista de Compra</a>
-                    </td>
 
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Izaias</td>
-                    <td>(16) 9999-9999</td>
-                    <td>
-                        <a href="/Clientes/Editar/3" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="/Clientes/Excluir/3" class="btn btn-danger btn-sm">Excluir</a>
-                        <a href="/Clientes/Compras/3" class="btn btn-primary btn-sm">Lista de Compra</a>
-                    </td>
+                @foreach (var item in Model)
+                {
 
-                </tr>
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Nome</td>
+                        <td>@item.Telefone</td>
+                        <td class="text-end">
+                            <a href="/Clientes/Editar/@item.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Clientes/Excluir/@item.Id" class="btn btn-danger btn-sm">Excluir</a>
+                            <a href="/Clientes/Compras/@item.Id" class="btn btn-primary btn-sm">Lista de Compra</a>
+                        </td>
+                    </tr>
+                                    
+                }
+                
             </tbody>
         </table>
     </div>
