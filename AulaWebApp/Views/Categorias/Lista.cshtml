@@ -1,0 +1,54 @@
+﻿@model List<AulaWebApp.Entidades.Categorias>
+
+<div class='card'>
+    <div class='card-body'>
+        
+<div class="row gx-1">
+            <div class="col">
+                <a href="/Categorias/Cadastro" class="btn btn-success btn-sm">Cadastro de Categorias</a>
+            </div>
+            <div class="col-3">
+                <select name="TipoBusca" class="form-select form-select-sm">
+                    <option value="0">Todoas os campos</option>
+                    <option value="id">Buscar por Id</option>
+                    <option value="nome">Buscar por Nome</option>
+                    <option value="telefone">Buscar por Telefone</option>
+                </select>
+            </div>
+            <div class="col-3">
+                <input name="Pesquisa" type="text" class="form-control form-control-sm" />
+            </div>
+            <div class="col-1">
+                <a href="/Categorias/" class="btn btn-info btn-sm w-100">Pesquisar</a>
+            </div>
+        </div>
+ 
+<table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Ativo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                    @foreach (var categoria in Model)
+                    {
+                    <tr>
+                        <td>@categoria.Id</td>
+                        <td>@categoria.Nome</td>
+                        <td>@categoria.Ativo</td>
+                        <td class="text-end">
+                            <a href="/Categorias/Editar/@categoria.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Categorias/Excluir/@categoria.Id" class="btn btn-danger btn-sm">Excluir</a>
+                            <a href="/Categorias/Compras/@categoria.Id" class="btn btn-primary btn-sm">Lista de Compra</a>
+                        </td>
+                    </tr> 
+                    }
+                  
+           </tbody>
+</table>
+    </div>
+</div>

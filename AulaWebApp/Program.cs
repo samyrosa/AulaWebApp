@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using WebApp_Manha;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<Contexto>(
+    option => option.UseSqlServer("Server=c3po;Database=ROSALES;User Id=sa;Password=aluno123;")
+    //option => option.UseSqlServer("Server=c3po;Database= ;Trusted_Connection=True;")
+    );
 
 var app = builder.Build();
 
