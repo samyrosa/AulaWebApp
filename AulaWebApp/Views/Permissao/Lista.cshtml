@@ -1,0 +1,8 @@
+﻿@model List<AulaWebApp.Entidades.PermissaoEntidade>
+
+@foreach (var permissao in Model)
+{
+    <p>@permissao.Id - @permissao.Descricao</p>
+}
+
+<a href="/Permissao/Cadastro">Cadastro</a>
