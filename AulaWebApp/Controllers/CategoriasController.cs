@@ -38,9 +38,13 @@ namespace AulaWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SalvarDados(Categorias dados)
+        public IActionResult SalvarDados(CategoriaViewModal dados)
         {
-            db.Categorias.Add(dados);
+            Categorias entidade = new Categorias();
+            entidade.Nome = dados.Nome;
+            entidade.Id =   dados.Id;
+            entidade.Ativo = dados.Ativo == "on" ? true : false;
+            db.Categorias.Add(entidade);
             db.SaveChanges();
             return RedirectToAction("Lista");
         }
