@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using AulaWebApp.Models;
 using AulaWebApp;
 using WebApp_Manha;
+using Microsoft.EntityFrameworkCore;
 
 namespace AulaWebApp.Controllers
 {
@@ -18,12 +19,15 @@ namespace AulaWebApp.Controllers
 
         public IActionResult Lista()
         {
-            return View();
+            List<Produtos> model = new List<Produtos>();
+            model = db.Produto.Include(a => a.Categoria).ToList();
+            return View(model);
         }
 
         public IActionResult Cadastro()
         {
             NovoProdutoModelView model = new NovoProdutoModelView();
+           
             model.ListaCategorias = db.Categorias.ToList();
 
             return View(model);

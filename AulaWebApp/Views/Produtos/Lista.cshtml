@@ -1,1 +1,75 @@
-﻿<a href="/Produtos/Cadastro" class="btn btn-success btn-sm">Cadastro de Produto</a>
+﻿@model List<AulaWebApp.Entidades.Produtos>
+<div class='card'>
+    <div class='card-body'>
+        <form action="/Produtos/Lista" method="post">
+
+            <div class="row gx-1">
+                <div class="col">
+                    <a href="/Produtos/Cadastro" class="btn btn-success btn-sm">Cadastro de Produtos</a>
+                </div>
+                <div class="col-2">
+                    <select name="TipoBusca" class="form-select form-select-sm">
+                        <option value="0">Todoas os campos</option>
+                        <option value="id">Buscar por Id</option>
+                        <option value="nome">Buscar por Nome</option>
+                        <option value="telefone">Buscar por Telefone</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control form-control-sm" name="Pesquisa">
+                        <a class="btn btn-sm btn-secondary" type="button" id="button-addon2"><i class="bi bi-search"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+
+
+
+
+        <hr />
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Titulo</th>
+                    <th>Valor</th>
+                    <th>Categoria</th>
+                    <th>Ativo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var Produtos in Model)
+                {
+                    <tr>
+                        <td>@Produtos.Id</td>
+                        <td>@Produtos.Descricao</td>
+                        <td>R$ @Produtos.Valor</td>
+                        <td>@Produtos.Categoria.Nome</td>
+                        <td class="ps-2">
+                            @if (Produtos.Ativo)
+                            {
+                                <i class="bi bi-check-square-fill text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="bi bi-x-square-fill text-danger"></i>
+                            }
+                        </td>
+                        <td class="text-end">
+                            <a href="/Produtos/Editar/@Produtos.Id" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Produtos/Excluir/@Produtos.Id" class="btn btn-danger btn-sm">Excluir</a>
+                            <a href="/Produtos/Compras/@Produtos.Id" class="btn btn-primary btn-sm">Lista de Compra</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
