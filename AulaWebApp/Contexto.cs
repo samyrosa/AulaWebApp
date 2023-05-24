@@ -8,8 +8,11 @@ namespace WebApp_Manha
         public Contexto(DbContextOptions<Contexto> opt) : base(opt)
         { }
 
-        public DbSet<Categorias> Categorias { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
 
         public DbSet<PermissaoEntidade> permissao { get; set; }
+
+        public DbSet<Produtos> Produto { get; set; }
+
     }
 }

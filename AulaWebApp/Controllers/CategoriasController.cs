@@ -40,7 +40,7 @@ namespace AulaWebApp.Controllers
         [HttpPost]
         public IActionResult SalvarDados(CategoriaViewModal dados)
         {
-            Categorias entidade = new Categorias();
+            Categoria entidade = new Categoria();
             entidade.Nome = dados.Nome;
             entidade.Id =   dados.Id;
             entidade.Ativo = dados.Ativo == "on" ? true : false;
